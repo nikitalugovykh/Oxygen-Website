@@ -1,0 +1,55 @@
+/* video */
+
+.video {
+    
+}
+.video__quotes-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 433px;
+}
+.video__quotes {
+    max-width: 652px;
+    font-family: 'Merriweather', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 36px;
+    align-items: center;
+    text-align: center;
+    color: #242121;
+}
+.video__quotes-author {
+    margin-top: 50px;
+    font-family: 'Merriweather', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 32px;
+    align-items: center;
+    text-align: center;
+    color: #9E9E9E;
+}
+
+
+.video__container {
+    position: relative;
+}
+.video__content {
+    width: 100%;
+}
+.video__btn {
+    position: absolute;
+    border: none;
+    background-color: transparent;
+    top: 130px;
+    left: 50%;
+    background-image: url('./img/icons/play.svg');
+    background-size: 100%;
+    background-repeat: no-repeat;
+
+    width: 55px;
+    height: 65px;
+}
