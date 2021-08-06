@@ -1,0 +1,45 @@
+const video = document.querySelector('.video');
+const video__container = document.querySelector('.video__container');
+const video__popup = document.querySelector('.video-popup');
+const video__popup__content = document.querySelector('.video-popup__content');
+
+
+video__container.addEventListener('click', () => {
+  video__popup.classList.toggle('visible');
+  const scrollPositionY = pageYOffset;
+  const scrollPositionX = pageXOffset;
+  const containerOffsetTop = video__container.offsetTop;
+  const containerOffsetLeft = video.offsetLeft;
+  const windowWidth = document.documentElement.clientWidth;
+  const windowHeight = document.documentElement.clientHeight;
+
+
+  if (video__popup.classList.contains('visible')) {
+
+    video__popup.style.top = -(containerOffsetTop - scrollPositionY) + 'px';
+
+    video__popup.style.left = - containerOffsetLeft + 'px';
+    video__popup.style.width = 100 + 'vw';
+    video__popup.style.height = 100 + 'vh';
+    video__popup.style.transform = 'none';
+
+    video__popup__content.style.top = 50 + '%';
+    video__popup.style.backgroundColor = 'rgba(51, 51, 51, 0.793)';
+
+    video__popup__content.style.left = 50 + '%';
+    video__popup__content.style.transform = 'translate3d(-50%, -50%, 0)';
+
+
+  } else {
+
+    video__popup.style.top = '50%';
+    video__popup.style.left = '50%';
+    video__popup.style.width = 100 + '%';
+    video__popup.style.height = 350 + 'px';
+    video__popup.style.transform = 'translate3d(-50%, -50%, 0)';
+    video__popup.style.backgroundColor = 'unset';
+
+
+    //     // body.style.backgroundColor = '#111';
+  }
+})
