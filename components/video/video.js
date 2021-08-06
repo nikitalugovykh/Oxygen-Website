@@ -22,12 +22,14 @@ video__container.addEventListener('click', () => {
     video__popup.style.width = 100 + 'vw';
     video__popup.style.height = 100 + 'vh';
     video__popup.style.transform = 'none';
-
-    video__popup__content.style.top = 50 + '%';
     video__popup.style.backgroundColor = 'rgba(51, 51, 51, 0.793)';
-
+    
+    video__popup__content.style.top = 50 + '%';
     video__popup__content.style.left = 50 + '%';
     video__popup__content.style.transform = 'translate3d(-50%, -50%, 0)';
+
+    document.documentElement.style.overflowX = 'hidden';
+    document.documentElement.style.overflowY = 'hidden';
 
 
   } else {
@@ -39,7 +41,7 @@ video__container.addEventListener('click', () => {
     video__popup.style.transform = 'translate3d(-50%, -50%, 0)';
     video__popup.style.backgroundColor = 'unset';
 
-
-    //     // body.style.backgroundColor = '#111';
+    document.documentElement.style.overflowX = 'visible';
+    document.documentElement.style.overflowY = 'visible';
   }
 })
