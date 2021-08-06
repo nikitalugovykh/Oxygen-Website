@@ -22,7 +22,8 @@ video__container.addEventListener('click', () => {
     video__popup.style.width = 100 + 'vw';
     video__popup.style.height = 100 + 'vh';
     video__popup.style.transform = 'none';
-    video__popup.style.backgroundColor = 'rgba(51, 51, 51, 0.793)';
+    document.documentElement.style.backgroundColor = 'rgba(31, 31, 31, 0.9)';
+    // video__popup.style.backgroundColor = 'rgba(51, 51, 51, 0.793)';
     
     video__popup__content.style.top = 50 + '%';
     video__popup__content.style.left = 50 + '%';
@@ -39,7 +40,7 @@ video__container.addEventListener('click', () => {
     video__popup.style.width = 100 + '%';
     video__popup.style.height = 350 + 'px';
     video__popup.style.transform = 'translate3d(-50%, -50%, 0)';
-    video__popup.style.backgroundColor = 'unset';
+    document.documentElement.style.backgroundColor = 'unset';
 
     document.documentElement.style.overflowX = 'visible';
     document.documentElement.style.overflowY = 'visible';
