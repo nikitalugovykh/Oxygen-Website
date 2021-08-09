@@ -13,15 +13,14 @@ video__container.addEventListener('click', () => {
   const windowWidth = document.documentElement.clientWidth;
   const windowHeight = document.documentElement.clientHeight;
 
-
   if (video__popup.classList.contains('visible')) {
 
-    video__popup.style.top = -(containerOffsetTop - scrollPositionY) + 'px';
+    video__popup.style.top = - (containerOffsetTop - scrollPositionY) + windowHeight/2 + 'px';
 
-    video__popup.style.left = - containerOffsetLeft + 'px';
-    video__popup.style.width = 100 + 'vw';
-    video__popup.style.height = 100 + 'vh';
-    video__popup.style.transform = 'none';
+    video__popup.style.left = 50 + '%';
+    video__popup.style.width = 90 + 'vw';
+    video__popup.style.height = 90 + 'vh';
+    video__popup.style.transform = 'translate3d(-50%, -50%, 0)';
     document.documentElement.style.backgroundColor = 'rgba(31, 31, 31, 0.9)';
     // video__popup.style.backgroundColor = 'rgba(51, 51, 51, 0.793)';
     
@@ -37,8 +36,8 @@ video__container.addEventListener('click', () => {
 
     video__popup.style.top = '50%';
     video__popup.style.left = '50%';
-    video__popup.style.width = 100 + '%';
-    video__popup.style.height = 350 + 'px';
+    video__popup.style.width = 100 /2+ '%';
+    video__popup.style.height = 350/2 + 'px';
     video__popup.style.transform = 'translate3d(-50%, -50%, 0)';
     document.documentElement.style.backgroundColor = 'unset';
 
