@@ -18,8 +18,8 @@ video__container.addEventListener('click', () => {
     video__popup.style.top = - (containerOffsetTop - scrollPositionY) + windowHeight/2 + 'px';
 
     video__popup.style.left = 50 + '%';
-    video__popup.style.width = 90 + 'vw';
-    video__popup.style.height = 90 + 'vh';
+    video__popup.style.width = 95 + 'vw';
+    video__popup.style.height = 95 + 'vh';
     video__popup.style.transform = 'translate3d(-50%, -50%, 0)';
     document.documentElement.style.backgroundColor = 'rgba(31, 31, 31, 0.9)';
     // video__popup.style.backgroundColor = 'rgba(51, 51, 51, 0.793)';
@@ -27,7 +27,7 @@ video__container.addEventListener('click', () => {
     video__popup__content.style.top = 50 + '%';
     video__popup__content.style.left = 50 + '%';
     video__popup__content.style.transform = 'translate3d(-50%, -50%, 0)';
-
+s
     document.documentElement.style.overflowX = 'hidden';
     document.documentElement.style.overflowY = 'hidden';
 
@@ -36,12 +36,23 @@ video__container.addEventListener('click', () => {
 
     video__popup.style.top = '50%';
     video__popup.style.left = '50%';
-    video__popup.style.width = 100 /2+ '%';
-    video__popup.style.height = 350/2 + 'px';
+    video__popup.style.width = 100 + '%';
+    video__popup.style.height = 350 + 'px';
     video__popup.style.transform = 'translate3d(-50%, -50%, 0)';
     document.documentElement.style.backgroundColor = 'unset';
 
     document.documentElement.style.overflowX = 'visible';
     document.documentElement.style.overflowY = 'visible';
+  }
+})
+
+window.addEventListener('resize', () => {
+  const scrollPositionY = pageYOffset;
+  const containerOffsetTop = video__container.offsetTop;
+  const windowHeight = document.documentElement.clientHeight;
+  console.log('lol');
+  if (video__popup.classList.contains('visible')) {
+
+    video__popup.style.top = - (containerOffsetTop - scrollPositionY) + windowHeight/2 + 'px'; 
   }
 })
