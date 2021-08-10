@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./gallery.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body>
+   <div class="portfolio__slider">
+      <button class="portfolio__btn portfolio__btn_prev" aria-label='Button left'><i class="fas fa-arrow-left"></i></button>
+      <nav class="portfolio__menu">
+          <ul class="portfolio__items-wrapper">
+              <li class="portfolio__menu_item link-active" data-item="ALL">ALL</li>
+              <li class="portfolio__menu_item" data-item="nature">Wild nature</li>
+              <li class="portfolio__menu_item" data-item="animal">Animals</li>
+              <li class="portfolio__menu_item" data-item="city">Cities</li>
+              <li class="portfolio__menu_item" data-item="art">Arts</li>
+              <li class="portfolio__menu_item" data-item="human">Human</li> 
+          </ul>
+      </nav>
+      <button class="portfolio__btn portfolio__btn_next" aria-label='Button right'><i class="fas fa-arrow-right"></i></button>
+  </div>
+  <div class="portfolio__gallery">
+    <div class="portfolio__items"></div>
+        <button class="portfolio__btn-more" id='portfolio__btn-more'>VIEW MORE PROJECTS</button>
+  </div>
+   
+    
+     
+ <script src="./dataIMG.js"></script>
+ <script src="./main.js"></script>
+</body>
+</html>
