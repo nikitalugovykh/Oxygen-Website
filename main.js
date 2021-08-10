@@ -224,35 +224,347 @@ animExpertise.addEventListener('transitionend', ()=> {
     }
 })
 
+// ......................................
+
+// Gallety................................
+
+
+const portfolio__menu = document.querySelector('.portfolio__menu');
+const items_wrapper = document.querySelector('.portfolio__items-wrapper');
+const menu_items = document.querySelectorAll('.portfolio__menu_item');
+const portfolio__btn_prev = document.querySelector('.portfolio__btn_prev');
+const portfolio__btn_next = document.querySelector('.portfolio__btn_next');
+
+let nextRightElement, nextLeftElement;
+
+let position = 0;
+
+
+// NEXT ..........
+
+portfolio__btn_next.addEventListener('click', ()=> { 
+    
+    nextRightElement = findNextElement();
+    const cordsRightElem = nextRightElement.getBoundingClientRect().right;
+    let {right: menuCord_r} = portfolio__menu.getBoundingClientRect();
+
+    position -= cordsRightElem - menuCord_r;
+    items_wrapper.style.transform = `translateX(${position}px)`;
+
+    findNextLeftElement()
+});
+
+// PREV ..........
+
+portfolio__btn_prev.addEventListener('click', ()=> {
+
+    nextLeftElement = findNextLeftElement();
+    const cordsLeftElem = nextLeftElement.getBoundingClientRect().left || 0;
+
+    let {left: menuCord_l} = portfolio__menu.getBoundingClientRect();
+
+  
+    position += menuCord_l - cordsLeftElem;
+    items_wrapper.style.transform = `translateX(${position}px)`;
+
+
+
+});
+
+
+
+function findNextElement(){
+
+  const menuCord_r = portfolio__menu.getBoundingClientRect().right;
+  
+  for (let i = 0; i < menu_items.length; i++) {
+    const item = menu_items[i];
+    const menuItem = item.dataset.item;
+    if(((checkCords(menuItem).left > menuCord_r) ||
+        ((checkCords(menuItem).left < menuCord_r) && (checkCords(menuItem).right > menuCord_r)))) { 
+            return item 
+    } 
+  }
+  return nextRightElement
+}
+
+function findNextLeftElement(){
+  const menuCord_l = portfolio__menu.getBoundingClientRect().left;
+  let resultItem;
+  for (let i = 0; i < menu_items.length; i++) {
+    const item = menu_items[i];
+    const menuItem = item.dataset.item;
+    if(((menuCord_l > checkCords(menuItem).left) || 
+        ((checkCords(menuItem).left < menuCord_l) && (checkCords(menuItem).right > menuCord_l)))) { 
+            resultItem = item
+        }
+  }
+  return resultItem ? resultItem : nextLeftElement
+}
+
+
+function checkCords(name) {
+  for (const item of menu_items) {
+    if(item.dataset.item === name) {
+      return item.getBoundingClientRect()
+    }
+  }
+}
+
+findNextElement()
+findNextLeftElement()
+
+let standardCountView = 9;
+let startLoop = 0;
+let imgRendered = 0;
+let dataGridLetter = ['a','b','c','d','e','f','g','h', 'i'];
+let activeTag;
+let firstPreview = true;
+
+const portfolio__items = document.querySelector('.portfolio__items');
+const gallery = document.querySelector('.portfolio__gallery');
+const btn_more = document.querySelector('#portfolio__btn-more');
+
+
+
+portfolio__menu.addEventListener('click', (e)=> {
+  menu_items.forEach(item => {
+    if(e.target === item) {
+      firstPreview = true;
+      standardCountView = 9;
+      startLoop = 0;
+      imgRendered = 0;
+      btn_more.hidden = false;
+      removeShowMoreContent()
+      if (item.dataset.item === 'ALL') {
+        activeTag = undefined;
+        renderMainImgs(portfolio__items);
+        return 
+      }
+      activeTag = e.target;
+      renderMainImgs(portfolio__items, getBaseByTag(e.target.dataset.item));
+    }
+  }) 
+})
+
+btn_more.addEventListener('click', () => showMore(activeTag))
+
+
+function showMore(activeTag) {
+  const wrapperForMore = document.createElement('div');
+  wrapperForMore.className = 'portfolio__show-more portfolio__items';
+
+  if (activeTag !== undefined) {
+      let baseForShowMore = getBaseByTag(activeTag.dataset.item);
+
+      if (firstPreview || baseForShowMore.length - imgRendered > 0) {
+        btn_more.before(wrapperForMore); 
+        renderMainImgs(wrapperForMore, baseForShowMore);
+      }
+      return
+   } else {
+     if (firstPreview || (dataImg.length - imgRendered > 0)) {
+        btn_more.before(wrapperForMore); 
+        renderMainImgs(wrapperForMore);
+     }  
+     return
+   }
+
+}
+
+
+function removeShowMoreContent () {
+  const wrapperForMore = document.querySelectorAll('.portfolio__show-more');
+  wrapperForMore.forEach(item => {
+    item.remove()
+  })
+}
+
+function renderMainImgs(container, dataForRender = dataImg) {
+  container.innerHTML = '';
+ 
+  if (!firstPreview) {
+    standardCountView += 9
+    startLoop += 9;
+  }
+  for (let i = startLoop, n = 0; i < standardCountView; i++, n++) {
+    if (dataForRender[i] === undefined) {
+      break 
+    }
+    const wrapper= document.createElement('div');
+    wrapper.classList.add('portfolio__item-img');
+    wrapper.classList.add(`${dataGridLetter[n]}`);
+
+
+    const img = document.createElement('img');
+    img.alt = `${dataForRender[i].description}`;
+    img.classList.add('portfolio__img');
+    img.src = `./img/gallery/${dataForRender[i].name}`;
+    
+
+    const div_title = document.createElement('div');
+    div_title.classList.add('portfolio__item-title');
+    div_title.textContent = 'OCCA CUPIDATAT'
+
+    
+    const div_descr = document.createElement('div');
+    div_descr.classList.add('portfolio__item-descr');
+    div_descr.textContent = 'DESIGN'
+
+
+    wrapper.append(img, div_title, div_descr);
+   
+    container.append(wrapper);
+    imgRendered +=1;
+  }
+  firstPreview = false;
+  functionRemoveBtnShowMore()
+}
+  function getBaseByTag(dataAttribute) {
+    const dataForRenderWithNewTags = dataImg.filter(item => {
+      for (const tag of item.tags) {
+       if (dataAttribute === tag) {
+         return tag
+       }
+      }
+    });
+    return dataForRenderWithNewTags
+  }
+
+  function functionRemoveBtnShowMore() {
+    if (activeTag !== undefined) {
+      let baseForShowMore = getBaseByTag(activeTag.dataset.item);
+
+      if (baseForShowMore.length - imgRendered <= 0) {
+        btn_more.hidden = true;
+        return
+      }
+      btn_more.hidden = false
+   } else {
+     if ((dataImg.length - imgRendered <= 0)) {
+      btn_more.hidden = true;
+      return 
+     }  
+     false
+   }
+
+  }
+
+renderMainImgs(portfolio__items)
+
+
+//........................................
+
+
+// Video .................................
+
+const video = document.querySelector('.video');
+const video__body = document.querySelector('.video__body');
+const video__btn = document.querySelector('.video__btn');
+const video__container = document.querySelector('.video__container');
+const video__content = document.querySelector('.video__content');
+const video__popup = document.querySelector('.video-popup');
+const video__popup__content = document.querySelector('.video-popup__content');
+const video_popup__close = document.querySelector('.video-popup__close');
+
+
+
+window.addEventListener('resize', () => {
+  video_popup__close.style.opacity = 0;
+  const scrollPositionY = pageYOffset;
+  const containerOffsetTop = video__container.offsetTop;
+  const windowHeight = document.documentElement.clientHeight;
+  if (video__popup.classList.contains('visible')) {
+
+    video__popup.style.top = - (containerOffsetTop - scrollPositionY) + windowHeight/2 + 'px'; 
+
+  }
+  setTimeout(()=> {
+    const video__popupHeight = video__popup__content.getBoundingClientRect().height;
+    video_popup__close.style.top =  windowHeight/2 - video__popupHeight/2 + 'px';
+    video_popup__close.style.right = 3 + '%';
+    video_popup__close.style.opacity = 1;
+  },1000);
+})
+
+window.addEventListener('click', (event) => {
+  
+  if (event.target === video__content || event.target === video__btn) {
+    video__popup.classList.toggle('visible');
+
+    appearanceVideoPlayerOnFullscreen()
+    settingVideoPlayer(video__content, video__popup__content)
+  } 
+  else if (video__popup.classList.contains('visible') && event.target !== video__popup__content){
+    video__popup.classList.remove('visible');
+    appearanceVideoPlayerOnFullscreen();
+    settingVideoPlayer(video__popup__content, video__content)
+  }
+
+})
+
+
+function appearanceVideoPlayerOnFullscreen () {
+  const scrollPositionY = pageYOffset;
+  const scrollPositionX = pageXOffset;
+  const containerOffsetTop = video__container.offsetTop;
+  const containerOffsetLeft = video.offsetLeft;
+  const windowWidth = document.documentElement.clientWidth;
+  const windowHeight = document.documentElement.clientHeight;
+  video_popup__close.style.opacity = 0;
+
+console.log(containerOffsetTop);
+
+  if (video__popup.classList.contains('visible')) {
+    video__content.style.opacity = 0.3;
+    video__btn.style.display = 'none';
+    video__popup.style.top = - (containerOffsetTop - scrollPositionY) + windowHeight/2 + 'px';
+    video__popup.style.left = 50 + '%' ;
+    video__popup.style.width = 83 + 'vw';
+    video__popup.style.height = 95 + 'vh';
+    video__popup.style.transform = 'translate3d(-50%, -50%, 0)';
+    document.documentElement.style.backgroundColor = 'rgba(31, 31, 31, 0.9)';
+    // video__popup.style.backgroundColor = 'rgba(51, 51, 51, 0.793)';
+    
+    video__popup__content.style.top = 50 + '%';
+    video__popup__content.style.left = 50 + '%';
+    video__popup__content.style.transform = 'translate3d(-50%, -50%, 0)';
+    // document.documentElement.style.overflowX = 'hidden';
+    // document.documentElement.style.overflowY = 'hidden';
+
+    setTimeout(()=> {
+      const video__popupHeight = video__popup__content.getBoundingClientRect().height;
+      video_popup__close.style.top =  windowHeight/2 - video__popupHeight/2 + 'px';
+      video_popup__close.style.right = 3 + '%';
+      video_popup__close.style.opacity = 1;
+    },1000);
+
+  } else {
+    video__content.style.opacity = 1;
+    video__btn.style.display = 'block';
+    video__popup.style.top = '50%';
+    video__popup.style.left = '50%';
+    video__popup.style.width = 100 + '%';
+    video__popup.style.height = 350 + 'px';
+    video__popup.style.transform = 'translate3d(-50%, -50%, 0)';
+    document.documentElement.style.backgroundColor = 'unset';
+
+    document.documentElement.style.overflowX = 'visible';
+    document.documentElement.style.overflowY = 'visible';
+    video_popup__close.style.opacity = 0;
+  }
+}
+
+function settingVideoPlayer(videobase, popup) {
+  let timeShownVideo = videobase.currentTime;
+  videobase.pause()
+  
+  popup.currentTime = timeShownVideo;
+  popup.play()
+}
 
 
 
 
+// ..........................................
 
-
-// ..............................
-
-// const http = require('http');
-// http.createServer((req, res)=> {
-
-
-//     let path = req.url.replace(/\/?(?:\?.*)?$/, '').toLowerCase();
-//     console.log(path);
-
-//     switch(path) {
-//         case '': 
-//             res.writeHead(200, {'Content-type': 'text/html'});
-//             res.end('<p>Hello World</p>');
-//             break;
-//         case '/about': 
-//             res.writeHead(200, {'Content-type': 'text/html'});
-//             res.end('<p>About page</p>');
-//             break;
-//         default:
-//             res.writeHead(404, {'Content-type': 'text/html'});
-//             res.end('<p>Page doesn`t exist</p>');
-//             break;
-//     }
-// }).listen(3000);
-
-// console.log('Server has been');

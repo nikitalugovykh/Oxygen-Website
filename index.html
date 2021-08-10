@@ -7,7 +7,6 @@
    <title>Oxygen</title>
    <link rel="stylesheet" href="style.css">
    <link rel="stylesheet" href="./icon-fonts.css">
-   <script src="./main.js" defer></script>
 </head>
 
 <body>
@@ -184,91 +183,56 @@
       </div>
    </section>
    <section class="portfolio">
-      <div class="container">
-         <div class="portfolio__head">
-            <div class="title">
-               Portfolio
-               <div class="title__line"></div>
-            </div>
-            <nav class="portfolio__menu">
-               <div class="portfolio__buttons-wrapper">
-                  <button class="portfolio__btn link-active">ALL</button>
-                  <button class="portfolio__btn">BRANDING</button>
-                  <button class="portfolio__btn">BRANDING</button>
-                  <button class="portfolio__btn">PHOTOGRAPHY</button>
-                  <button class="portfolio__btn">ILLUSTRATION</button>
-               </div>
-               <a href="#" class="portfolio__slider-btn portfolio__slider-left portfolio__slider-show"
-                  role="button"></a>
-               <a href="#" class="portfolio__slider-btn portfolio__slider-righr portfolio__slider-show"
-                  role="button"></a>
-            </nav>
-         </div>
-      </div>
-      <div class="portfolio__items">
-         <div class="portfolio__col">
-            <div class="portfolio__item-img portfolio__item-1">
-               <div class="portfolio__item-title">OCCA CUPIDATAT</div>
-               <div class="portfolio__item-descr">DESIGN</div>
-            </div>
-            <div class="portfolio__item-img portfolio__item-2">
-               <div class="portfolio__item-title">OCCA CUPIDATAT</div>
-               <div class="portfolio__item-descr">DESIGN</div>
-            </div>
-         </div>
-         <div class="portfolio__col">
-            <div class="portfolio__item-img portfolio__item-3">
-               <div class="portfolio__item-title">OCCA CUPIDATAT</div>
-               <div class="portfolio__item-descr">DESIGN</div>
-            </div>
-            <div class="portfolio__item-img portfolio__item-4">
-               <div class="portfolio__item-title">OCCA CUPIDATAT</div>
-               <div class="portfolio__item-descr">DESIGN</div>
-            </div>
-            <div class="portfolio__item-img portfolio__item-5">
-               <div class="portfolio__item-title">OCCA CUPIDATAT</div>
-               <div class="portfolio__item-descr">DESIGN</div>
-            </div>
-         </div>
-         <div class="portfolio__col">
-            <div class="portfolio__item-img portfolio__item-6">
-               <div class="portfolio__item-title">OCCA CUPIDATAT</div>
-               <div class="portfolio__item-descr">DESIGN</div>
-            </div>
-            <div class="portfolio__item-img portfolio__item-7">
-               <div class="portfolio__item-title">OCCA CUPIDATAT</div>
-               <div class="portfolio__item-descr">DESIGN</div>
-            </div>
-         </div>
-         <div class="portfolio__col">
-            <div class="portfolio__item-img portfolio__item-8">
-               <div class="portfolio__item-title">OCCA CUPIDATAT</div>
-               <div class="portfolio__item-descr">DESIGN</div>
-            </div>
-            <div class="portfolio__item-img portfolio__item-9">
-               <div class="portfolio__item-title">OCCA CUPIDATAT</div>
-               <div class="portfolio__item-descr">DESIGN</div>
-            </div>
-         </div>
-      </div>
-      <button class="portfolio__btn-more">VIEW MORE PROJECTS</button>
-   </section>
-   <section class="video">
+          <div class="portfolio__head">
+             <div class="title">
+                Portfolio
+                <div class="title__line"></div>
+             </div>
+              <div class="portfolio__slider">
+                  <button class="portfolio__btn portfolio__btn_prev icon-arrow-left" aria-label='Button left'></button>
+                  <nav class="portfolio__menu">
+                      <ul class="portfolio__items-wrapper">
+                          <li class="portfolio__menu_item link-active" data-item="ALL">ALL</li>
+                          <li class="portfolio__menu_item" data-item="nature">Wild nature</li>
+                          <li class="portfolio__menu_item" data-item="animal">Animals</li>
+                          <li class="portfolio__menu_item" data-item="city">Cities</li>
+                          <li class="portfolio__menu_item" data-item="art">Arts</li>
+                          <li class="portfolio__menu_item" data-item="human">Human</li> 
+                      </ul>
+                  </nav>
+                  <button class="portfolio__btn portfolio__btn_next icon-arrow-right" aria-label='Button right'></button>
+              </div>
+          </div>
+          <div class="portfolio__gallery">
+             <div class="portfolio__items"></div>
+             <button class="portfolio__btn-more" id='portfolio__btn-more'>VIEW MORE PROJECTS</button>
+          </div>
+  </section> 
+  <section class="video">
       <div class="video__quotes-text">
          <div class="video__quotes">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do&nbsp;eiusmod tempor incididunt
-            ut&nbsp;labore et&nbsp;dolore magna aliqua.
+         Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
          </div>
          <div class="video__quotes-author">
             Gilbert Hammond
          </div>
       </div>
       <div class="video__container">
-         <video class="video__content" src="./video/bg.mp4" height="324" width="1440" 
-            poster="./video/bg_video.jpg"></video>
-         <button class="video__btn"></button>
+         <div class="video__body">
+            <video class="video__content" src="./video/bg.mp4" autoplay loop auto></video>
+         </div>
+         <button class="video__btn icon-play"></button>
+         <div class="video-popup">
+            <div class="video-popup__container">
+               <div class="video-popup__body">
+                     <video controls class="video-popup__content" src="./video/bg.mp4"></video>
+                     <div class="video-popup__close">X</div>
+               </div>
+            </div>
+         </div>
       </div>
-   </section>
+
+ </section>
    <section class="statistics">
       <div class="container">
          <div class="statistics__inner">
@@ -517,7 +481,8 @@
       </div>
       <div class="footer__copy">@2020 Oxygen Theme</div>
    </footer>
-
+   <script src="./dataIMG.js"></script>
+   <script src="./main.js"></script>
 </body>
 
 </html>
