@@ -9,27 +9,34 @@
     <title>Document</title>
 </head>
 <body>
-   <div class="portfolio__slider">
-      <button class="portfolio__btn portfolio__btn_prev" aria-label='Button left'><i class="fas fa-arrow-left"></i></button>
-      <nav class="portfolio__menu">
-          <ul class="portfolio__items-wrapper">
-              <li class="portfolio__menu_item link-active" data-item="ALL">ALL</li>
-              <li class="portfolio__menu_item" data-item="nature">Wild nature</li>
-              <li class="portfolio__menu_item" data-item="animal">Animals</li>
-              <li class="portfolio__menu_item" data-item="city">Cities</li>
-              <li class="portfolio__menu_item" data-item="art">Arts</li>
-              <li class="portfolio__menu_item" data-item="human">Human</li> 
-          </ul>
-      </nav>
-      <button class="portfolio__btn portfolio__btn_next" aria-label='Button right'><i class="fas fa-arrow-right"></i></button>
-  </div>
-  <div class="portfolio__gallery">
-    <div class="portfolio__items"></div>
-        <button class="portfolio__btn-more" id='portfolio__btn-more'>VIEW MORE PROJECTS</button>
-  </div>
-   
-    
-     
+    <section class="portfolio">
+        <div class="container">
+            <div class="portfolio__head">
+               <div class="title">
+                  Portfolio
+                  <div class="title__line"></div>
+               </div>
+                <div class="portfolio__slider">
+                    <button class="portfolio__btn portfolio__btn_prev" aria-label='Button left'><i class="fas fa-arrow-left"></i></button>
+                    <nav class="portfolio__menu">
+                        <ul class="portfolio__items-wrapper">
+                            <li class="portfolio__menu_item link-active" data-item="ALL">ALL</li>
+                            <li class="portfolio__menu_item" data-item="nature">Wild nature</li>
+                            <li class="portfolio__menu_item" data-item="animal">Animals</li>
+                            <li class="portfolio__menu_item" data-item="city">Cities</li>
+                            <li class="portfolio__menu_item" data-item="art">Arts</li>
+                            <li class="portfolio__menu_item" data-item="human">Human</li> 
+                        </ul>
+                    </nav>
+                    <button class="portfolio__btn portfolio__btn_next" aria-label='Button right'><i class="fas fa-arrow-right"></i></button>
+                </div>
+            </div>
+                <div class="portfolio__gallery">
+                    <div class="portfolio__items"></div>
+                        <button class="portfolio__btn-more" id='portfolio__btn-more'>VIEW MORE PROJECTS</button>
+                </div>
+        </div>
+    </section> 
  <script src="./dataIMG.js"></script>
  <script src="./main.js"></script>
 </body>

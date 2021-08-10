@@ -3,6 +3,34 @@ body {
     
     margin: 0 auto;
 }
+.portfolio__head {
+    padding: 160px 135px;
+}
+.title {
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 60px;
+    line-height: 75px;
+    color: #242121;
+    position: relative;
+    letter-spacing: -1.65px;
+    
+}
+.title__line {
+    margin-top: 14px;
+    width: 60px;
+    border-bottom: 4px solid #FCBB08;
+}
+
+.portfolio {
+    width: 100%;
+}
+.portfolio__head {
+    display: flex;
+    justify-content: space-between;
+}
+
 .portfolio__gallery {
     height: 100vh;
 }
@@ -257,7 +285,6 @@ body {
     height: 40px;
     border: 0;
     background-color: transparent;
-    background-color: tomato;
     border-radius: 50%;
 } 
 .portfolio__btn:hover {
