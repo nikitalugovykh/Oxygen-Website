@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style_video.css">
+    <link rel="stylesheet" href="./../../icon-fonts.css">
     <title>Document</title>
 </head>
 <body>
@@ -22,11 +23,12 @@
             <div class="video__body">
                <video class="video__content" src="./../../video/bg.mp4" autoplay loop auto></video>
             </div>
-            <button class="video__btn"></button>
+            <button class="video__btn icon-play"></button>
             <div class="video-popup">
                <div class="video-popup__container">
                   <div class="video-popup__body">
-                     <video controls class="video-popup__content" src="./../../video/bg.mp4"></video>
+                        <video controls class="video-popup__content" src="./../../video/bg.mp4"></video>
+                        <div class="video-popup__close">X</div>
                   </div>
                   <!-- <div class="controls">
                      <button class="controls__btn play" data-icon="P" aria-label="play pause toggle"></button>
@@ -36,7 +38,6 @@
                      <button class="controls__btn fwd" data-icon="F" aria-label="fast forward"></button>
                   </div>    -->
                </div>
-               <div class="video-popup__close">X</div>
             </div>
         </div>
 

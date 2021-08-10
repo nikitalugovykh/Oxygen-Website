@@ -66,6 +66,7 @@ body {
     top: 50%;
     transform: translateY(-50%);
     cursor: pointer;
+    transition: all 1s ease;
 }
 .video__btn {
     position: absolute;
@@ -74,20 +75,18 @@ body {
     top: 50%;
     transform: translateY(-50%);
     left: 50%;
-    background-image: url('./../../img/icons/play.svg');
-    background-size: 100%;
-    background-repeat: no-repeat;
-
-    width: 55px;
-    height: 65px;
-    /* animation: video__btn 5s infinite; */
+    font-size: 50px;
+    cursor: pointer;
+    animation: video__btn 5s infinite;
 }
 .video__btn:hover {
     animation-play-state: paused;
-    transition: all 5s linear;
-    cursor: pointer;
+    transition: all .5s linear;
 }
-
+.video__btn:hover::before {
+  color: #fff;
+  text-shadow: 0px 0px 5px #fff, 0px 0px 5px #fff, 0px 0px 5px #fff;
+}
 .video-popup {
   position: absolute;
   top: 50%;
@@ -106,7 +105,6 @@ body {
   left: 0;
   width: 100%;
   display: block;
-
 }
 
 .video-popup.visible {
@@ -120,6 +118,7 @@ body {
   top: 0;
   left: 0; */
 
+
 }
 .video-popup.visible .video-popup__content {
   visibility: unset;
@@ -127,6 +126,29 @@ body {
   /* transition: all .8s linear; */
 }
 
+.video-popup__close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  opacity: 0;
+  border-radius: 50%;
+  background-color: rgba(153, 153, 153, 0.075);
+  padding: 15px;
+  cursor: pointer;
+  transition: opacity .8s linear;
+}
+.video-popup__close:hover {
+  box-shadow:  4px 4px 6px 0 rgba(255,255,255,.5),
+  -4px -4px 6px 0 rgba(116, 125, 136, .2), 
+  inset -4px -4px 6px 0 rgba(255,255,255,.5),
+  inset 4px 4px 6px 0 rgba(116, 125, 136, .3);
+
+  color: aliceblue;
+}
+
+.video-popup.visible .video-popup__close {
+  transition: none;
+}
 
 @keyframes video__btn {
   0% {
