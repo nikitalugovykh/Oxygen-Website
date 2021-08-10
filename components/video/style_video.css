@@ -79,13 +79,15 @@ body {
     cursor: pointer;
     animation: video__btn 5s infinite;
 }
-.video__btn:hover {
-    animation-play-state: paused;
-    transition: all .5s linear;
-}
-.video__btn:hover::before {
+.video__container:hover .video__btn{
+  animation-play-state: paused;
+  transition: all .5s linear;
+} 
+
+.video__container:hover .video__btn::before {
   color: #fff;
   text-shadow: 0px 0px 5px #fff, 0px 0px 5px #fff, 0px 0px 5px #fff;
+  transition: all 0.3s linear;
 }
 .video-popup {
   position: absolute;

@@ -1,4 +1,5 @@
 const video = document.querySelector('.video');
+const video__body = document.querySelector('.video__body');
 const video__btn = document.querySelector('.video__btn');
 const video__container = document.querySelector('.video__container');
 const video__content = document.querySelector('.video__content');
@@ -27,13 +28,14 @@ window.addEventListener('resize', () => {
 })
 
 window.addEventListener('click', (event) => {
-  if (event.target === video__content) {
+  if (event.target === video__content || event.target === video__btn) {
     video__popup.classList.toggle('visible');
 
     appearanceVideoPlayerOnFullscreen()
     settingVideoPlayer(video__content, video__popup__content)
-  } else {
-    video__popup.classList.toggle('visible');
+  } 
+  else if (video__popup.classList.contains('visible') && event.target !== video__popup__content){
+    video__popup.classList.remove('visible');
     appearanceVideoPlayerOnFullscreen();
     settingVideoPlayer(video__popup__content, video__content)
   }
@@ -55,7 +57,7 @@ function appearanceVideoPlayerOnFullscreen () {
     video__content.style.opacity = 0.3;
     video__btn.style.display = 'none';
     video__popup.style.top = - (containerOffsetTop - scrollPositionY) + windowHeight/2 + 'px';
-    video__popup.style.left = 50 + '%';
+    video__popup.style.left = 50 + '%' ;
     video__popup.style.width = 83 + 'vw';
     video__popup.style.height = 95 + 'vh';
     video__popup.style.transform = 'translate3d(-50%, -50%, 0)';
