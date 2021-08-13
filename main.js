@@ -535,10 +535,12 @@ function appearanceVideoPlayerOnFullscreen () {
     document.documentElement.style.padding = `0 ${findWidthOfScroll()}px 0 0`;
     document.documentElement.style.overflowX = 'hidden';
     document.documentElement.style.overflowY = 'hidden';
+    headerTop.classList.remove('nav-down');
+    headerTop.classList.add('nav-up');
 
     setTimeout(()=> {
       const video__popupHeight = video__popup__content.getBoundingClientRect().height;
-      video_popup__close.style.top =  windowHeight/2 - video__popupHeight/2 + 'px';
+      video_popup__close.style.top =  windowHeight/2 - video__popupHeight/2 + 'px'
       video_popup__close.style.right = 3 + '%';
       video_popup__close.style.opacity = 1;
     },1000);
