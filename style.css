@@ -5,6 +5,10 @@
     list-style: none;
     text-decoration: none;
 }
+:root {
+    --turquoise-color: #00b2a0;
+    --turquoise-color-50: #00b2a08c ;
+} 
 
 @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@1,300&family=Montserrat:wght@300;700&family=Open+Sans:wght@300;400;600;700&family=Raleway:wght@700&display=swap');
 
@@ -88,7 +92,7 @@ body {
 
 .menu {
     display: block;
-    background-color: #00b2a075;
+    background-color: var(--turquoise-color-50); 
     overflow: auto;
     transition: all .3s linear;
 }
@@ -292,10 +296,10 @@ body {
         margin: 0;    
     }
     .menu__list li:hover {
-        background-color:#00b2a08c    
+        background-color: var(--turquoise-color-50)   
     }
     .menu__list li:active {
-        background-color:#00b2a0    
+        background-color: var(--turquoise-color);    
     }
 
 
@@ -313,7 +317,7 @@ body {
         width: 80%;
         height: 3px;
         top: 50%;
-        background-color: #00B2A0;
+        background-color: var(--turquoise-color); 
         transition: all 0.3s ease;
     }
     .header__burger::before {
@@ -322,7 +326,7 @@ body {
         content: '';
         width: 100%;
         height: 3px;
-        background-color: #00B2A0;
+        background-color: var(--turquoise-color); 
         transition: all 0.3s ease;
     }
     .header__burger::after {
@@ -331,7 +335,7 @@ body {
         content: '';
         width: 100%;
         height: 3px;
-        background-color: #00B2A0;
+        background-color: var(--turquoise-color); 
         transition: all 0.3s ease;
     }
 
@@ -664,7 +668,7 @@ body {
 
 .icon-speaker:hover:before {
     color: #fff;
-    background-color: #00B2A0;
+    background-color: var(--turquoise-color); 
     padding: 10px;
     border-radius: 50%;
 
@@ -672,7 +676,7 @@ body {
 }
 .icon-monitor:hover:before {
     color: #fff;
-    background-color: #00B2A0;
+    background-color: var(--turquoise-color); 
     padding: 10px;
     border-radius: 50%;
 
@@ -680,7 +684,7 @@ body {
 }
 .icon-vector:hover:before {
     color: #fff;
-    background-color: #00B2A0;
+    background-color: var(--turquoise-color); 
     padding: 10px;
     border-radius: 50%;
 
@@ -1501,7 +1505,7 @@ left: 0; */
     font-weight: normal;
     font-size: 14px;
     line-height: 19px;
-    color: #00B2A0;
+    color: var(--turquoise-color); 
     text-align: center;
 }
 
@@ -1593,7 +1597,7 @@ left: 0; */
 }
 .slider__control:active {
     transform: scale(0.9);
-    color:#00b2a0;
+    color:var(--turquoise-color); 
 }
 .pagination-outter{
     width: 130px;
@@ -1626,7 +1630,7 @@ left: 0; */
     transform: scale(1.8);   
 }
 .slider__circle:active {
-    background: #00b2a0;
+    background: var(--turquoise-color); 
 }
 .slider__circle--active {
     transform: scale(1.8); 
@@ -1638,7 +1642,7 @@ left: 0; */
     transform: scale(1);   
 }
 .slider__circle--active:active {
-    background: #00b2a0;
+    background: var(--turquoise-color); 
 }
 
 .slider__circle + .slider__circle {
@@ -1775,23 +1779,38 @@ left: 0; */
 }
 /* pricing */
 
+
+
 .pricing {
     background: #F6F8FA;
 }
-.content {}
-.title {}
+
 .pricing__items {
     margin-top: 90px;
     display: flex;
     justify-content: space-between;
     gap: 30px;
 }
+.pricing__item-container {
+    width: 100%;
+    
+    perspective: 35px;
+ 
+    
+}
 .pricing__item {
-    background: #FFFFFF;
+    background: #fff;
     padding: 25px;
     width: 100%;
     min-height: 583px;
-    transition: width 0.5s linear;
+    cursor: pointer;
+    box-shadow: 2px 2px 50px rgba(0, 0, 0, 0.2);
+    transition: transform 0.5s;
+    -webkit-transition: transform 0.5s;
+    -moz-transition: transform 0.5s;
+    -o-transition: transform 0.5s;
+    
+    
 }
 .pricing__item-name {
     font-family: 'Open Sans', sans-serif;
@@ -1800,6 +1819,7 @@ left: 0; */
     line-height: 22px;
     color: #242121;
     margin-bottom: 8px;
+    transition: color 0.3s linear;
 }
 .pricing__item-rate {
     white-space: nowrap;
@@ -1857,8 +1877,13 @@ left: 0; */
     background-color: transparent;
     border: none;
     cursor: pointer;
+    transition: color 0.3s linear;
 }
-
+.pricing__item-container:hover .pricing__btn, 
+.pricing__item-container:hover .pricing__item-name {
+    color: var(--turquoise-color-50);
+    text-shadow: 0 0 5px 5px var(--turquoise-color);
+}
 @media (max-width:1024px) {
     .pricing__item-rate {
         font-size: 55px;
@@ -1876,6 +1901,9 @@ left: 0; */
         white-space: nowrap;
         font-size: 13px;
     }
+    .pricing__cont {
+        margin-top: 50px;
+    }
 }
 @media (max-width:768px) {
     .pricing__items {
@@ -1884,6 +1912,7 @@ left: 0; */
     }
     .pricing__item {
         width: 60%;
+        margin: 0 auto;
     }
 }
 @media (max-width:550px) {
