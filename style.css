@@ -2037,7 +2037,7 @@ left: 0; */
 }
 .contact__tooltip {
     padding: 16px 15px;
-	max-width: 400px;
+    max-width: 100%;
 
     position:absolute;
     top: 0;
