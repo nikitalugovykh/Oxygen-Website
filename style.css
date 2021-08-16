@@ -277,7 +277,8 @@ body {
         height: 100vh;
     }
     .header__top-inner {
-        padding: 20px 50px
+        padding-top: 20px;
+        padding-bottom: 20px;
     }
     .menu.active {
         top: 75px;
@@ -377,7 +378,8 @@ body {
 }
 @media (max-width: 550px) {
     .header__top-inner {
-        padding: 15px 50px;
+        padding-top: 15px;
+        padding-bottom: 15px;
     }
     .menu.active {
         top: 65px;
@@ -391,7 +393,8 @@ body {
 }
 @media (max-width: 430px) {
     .header__top-inner {
-        padding: 10px 50px;
+        padding-top: 10px;
+        padding-bottom: 10px;
     }
     .menu.active {
         top: 45px;
@@ -2034,7 +2037,7 @@ left: 0; */
 }
 .contact__tooltip {
     padding: 16px 15px;
-	margin-left: 0;	
+	max-width: 400px;
 
     position:absolute;
     top: 0;
@@ -2046,7 +2049,6 @@ left: 0; */
 	font-size: 1.3em;
 	font-weight: bold;
 	line-height: 1.5em;
-    white-space: nowrap;
 	text-shadow: 4px 4px 5px #000;
 	opacity: 0;
     visibility: hidden;
@@ -2073,7 +2075,7 @@ left: 0; */
     opacity: 1;
     visibility: visible;
     filter: alpha(opacity=100);
-    top: -67px;
+    top: -89px;
     z-index: 99;
     -webkit-transition: all 0.2s ease;
     -moz-transition: all 0.2s ease;

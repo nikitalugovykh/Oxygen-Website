@@ -66,44 +66,44 @@ window.addEventListener('scroll', function(event) {
   }, 250);
 
   function hasScrolled() {
-    // 
-      let currentScroll = window.pageYOffset;
-      
-      let documentHeight = Math.max (
-        document.body.scrollHeight, document.documentElement.scrollHeight, 
-        document.body.offsetHeight, document.documentElement.offsetHeight,
-        document.body.clientHeight, document.documentElement.clientHeight
-      )
-      
-      let windowHeight = document.documentElement.clientHeight
+    
+    let currentScroll = window.pageYOffset;
+    
+    let documentHeight = Math.max (
+      document.body.scrollHeight, document.documentElement.scrollHeight, 
+      document.body.offsetHeight, document.documentElement.offsetHeight,
+      document.body.clientHeight, document.documentElement.clientHeight
+    )
+    
+    let windowHeight = document.documentElement.clientHeight
 
-      // Make sure they scroll more than delta
-      if(Math.abs(lastScrollTop - currentScroll) <= delta){
-          return;
-      }
-
-      // If they scrolled down and are past the navbar, add class .nav-up.
-      // This is necessary so you never see what is "behind" the navbar.
-      if (menu.classList.contains('active')) {
-        headerTop.classList.remove('nav-up');
-        headerTop.classList.add('nav-down');
-      } 
-      else if (currentScroll > lastScrollTop && currentScroll > navbarHeight ) {
-          // Scroll Down
-          headerTop.classList.remove('nav-down');
-          headerTop.classList.add('nav-up');
-      } 
-
-      else {
-          // Scroll Up
-          if(currentScroll + windowHeight < documentHeight) {
-            headerTop.classList.remove('nav-up');
-            headerTop.classList.add('nav-down');
-          }
-      }
-      
-      lastScrollTop = currentScroll;
+    // Make sure they scroll more than delta
+    if(Math.abs(lastScrollTop - currentScroll) <= delta){
+        return;
     }
+
+    // If they scrolled down and are past the navbar, add class .nav-up.
+    // This is necessary so you never see what is "behind" the navbar.
+    if (menu.classList.contains('active')) {
+      headerTop.classList.remove('nav-up');
+      headerTop.classList.add('nav-down');
+    } 
+    else if (currentScroll > lastScrollTop && currentScroll > navbarHeight ) {
+        // Scroll Down
+        headerTop.classList.remove('nav-down');
+        headerTop.classList.add('nav-up');
+    } 
+
+    else {
+        // Scroll Up
+        if(currentScroll + windowHeight < documentHeight) {
+          headerTop.classList.remove('nav-up');
+          headerTop.classList.add('nav-down');
+        }
+    }
+    
+    lastScrollTop = currentScroll;
+  }
 });
 
 
@@ -161,9 +161,6 @@ if(animItems || animItemsLeft) {
             const animStart = 4;
 
             let animItemPoint = window.innerHeight  - animItemHeight / animStart; 
-            // console.log('window.pageYOffset: ', window.pageYOffset);
-            // console.log('animItemOffset: ', animItemOffset);
-            // console.log('animItemPoint: ', animItemPoint)
             if(animItemHeight > window.innerHeight ) {
                 animItemPoint = window.innerHeight  - window.innerHeight / animStart; 
             }
@@ -188,9 +185,7 @@ if(animItems || animItemsLeft) {
             const animStart = 4;
 
             let animItemPoint = window.innerHeight  - animItemHeight / animStart; 
-            // console.log('window.pageYOffset: ', window.pageYOffset);
-            // console.log('animItemOffset: ', animItemOffset);
-            // console.log('animItemPoint: ', animItemPoint)
+
             if(animItemHeight > window.innerHeight ) {
                 animItemPoint = window.innerHeight  - window.innerHeight / animStart; 
             }
@@ -209,15 +204,13 @@ if(animItems || animItemsLeft) {
         const rect  = el.getBoundingClientRect();
         const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        // console.log('rect.top: ', rect.top);
-        // console.log('scrollTop: ', scrollTop);
 
-
-                return {
-            top: rect.top  + scrollTop,
-            left: rect.left + scrollLeft,
+        return {
+          top: rect.top  + scrollTop,
+          left: rect.left + scrollLeft,
         }
     }
+
     setTimeout(()=> {
         animOnScroll();
     }, 300)
@@ -281,7 +274,7 @@ let nextRightElement, nextLeftElement;
 let position = 0;
 
 
-// NEXT ..........
+// NEXT 
 
 portfolio__btn_next.addEventListener('click', ()=> { 
     
@@ -295,7 +288,7 @@ portfolio__btn_next.addEventListener('click', ()=> {
     findNextLeftElement()
 });
 
-// PREV ..........
+// PREV 
 
 portfolio__btn_prev.addEventListener('click', ()=> {
 
@@ -308,10 +301,7 @@ portfolio__btn_prev.addEventListener('click', ()=> {
     position += menuCord_l - cordsLeftElem;
     items_wrapper.style.transform = `translateX(${position}px)`;
 
-
-
 });
-
 
 
 function findNextElement(){
@@ -342,7 +332,6 @@ function findNextLeftElement(){
   }
   return resultItem ? resultItem : nextLeftElement
 }
-
 
 function checkCords(name) {
   for (const item of menu_items) {
@@ -446,17 +435,6 @@ function renderMainImgs(container, dataForRender = dataImg) {
     img.alt = `${dataForRender[i].description}`;
     img.classList.add('portfolio__img');
     img.src = `./img/gallery/${dataForRender[i].name}`;
-    
-
-    // const div_title = document.createElement('div');
-    // div_title.classList.add('portfolio__item-title');
-    // div_title.textContent = 'OCCA CUPIDATAT'
-
-    
-    // const div_descr = document.createElement('div');
-    // div_descr.classList.add('portfolio__item-descr');
-    // div_descr.textContent = 'DESIGN'
-
 
     wrapper.append(img);
    
@@ -552,10 +530,7 @@ window.addEventListener('click', (event) => {
 
 function appearanceVideoPlayerOnFullscreen () {
   const scrollPositionY = pageYOffset;
-  const scrollPositionX = pageXOffset;
   const containerOffsetTop = video__container.offsetTop;
-  const containerOffsetLeft = video.offsetLeft;
-  const windowWidth = document.documentElement.clientWidth;
   const windowHeight = document.documentElement.clientHeight;
   video_popup__close.style.opacity = 0;
 
@@ -1031,5 +1006,3 @@ footer_btn.addEventListener('click', () => {
 
 
 // .........................
-
-// https://codepen.io/fabriceleven/pen/KdveeO
