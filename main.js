@@ -2,13 +2,23 @@
 const headerBurger = document.querySelector('.header__burger');
 const menu = document.querySelector('.menu');
 const body = document.body;
+let open = false;
 
+headerBurger.addEventListener('click', showMenuMobile);
 
-headerBurger.addEventListener('click', ( )=> {
-    headerBurger.classList.toggle('active');
-    menu.classList.toggle('active');
-    body.classList.toggle('lock');
-})
+function showMenuMobile() {
+  headerBurger.classList.toggle('active');
+  menu.classList.toggle('active');
+  body.classList.toggle('lock');
+  if (!open) {
+    document.documentElement.style.padding = `0 ${findWidthOfScroll()}px 0 0`;
+    open = true
+  }
+  else if(open) {
+      document.documentElement.style.padding = `0 0 0 0`;
+      open = false
+  }
+}
 
 window.addEventListener('resize', ()=> {
     if(!isVisible(headerBurger)) {
@@ -98,6 +108,37 @@ window.addEventListener('scroll', function(event) {
 
 
 // .............................
+
+// Menu navigation 
+const navigationItems = document.querySelectorAll('[data-menu-navigation]')
+const menu__links = document.querySelectorAll('.menu__link');
+
+menu__links.forEach(menu__link => {
+  menu__link.addEventListener('click',scrollTo)
+})
+
+function scrollTo(ev) {
+  ev.preventDefault();
+
+  let selectedMenuItem = ev.currentTarget.innerHTML.toLowerCase();
+  
+  navigationItems.forEach(item => {
+
+    if (item.dataset.menuNavigation === selectedMenuItem) {
+      console.log(item);
+      item.scrollIntoView({behavior: 'smooth'});
+      headerTop.classList.add('nav-up');
+      headerTop.classList.remove('nav-down');
+      if (window.innerWidth <= mediaQuerySize) {
+        showMenuMobile()
+      }
+    }
+  })
+    
+}
+
+// ............................
+
 
 // Animation Scroll
 
@@ -407,17 +448,17 @@ function renderMainImgs(container, dataForRender = dataImg) {
     img.src = `./img/gallery/${dataForRender[i].name}`;
     
 
-    const div_title = document.createElement('div');
-    div_title.classList.add('portfolio__item-title');
-    div_title.textContent = 'OCCA CUPIDATAT'
+    // const div_title = document.createElement('div');
+    // div_title.classList.add('portfolio__item-title');
+    // div_title.textContent = 'OCCA CUPIDATAT'
 
     
-    const div_descr = document.createElement('div');
-    div_descr.classList.add('portfolio__item-descr');
-    div_descr.textContent = 'DESIGN'
+    // const div_descr = document.createElement('div');
+    // div_descr.classList.add('portfolio__item-descr');
+    // div_descr.textContent = 'DESIGN'
 
 
-    wrapper.append(img, div_title, div_descr);
+    wrapper.append(img);
    
     container.append(wrapper);
     imgRendered +=1;
@@ -814,12 +855,12 @@ window.addEventListener('resize', () => {
 // ...............
 
 // Animation for pricing cards
-
+const mediaQuerySize = 768;
 if(!(/iPhone|iPad|iPod|Android/i.test(navigator.userAgent))){
    // Init
    const pricing__containers = document.querySelectorAll(".pricing__item-container");
    const pricing__items = document.querySelectorAll(".pricing__item");
-   const mediaQuerySize = 768;
+
  
    // Mouse
    class Mouse {
@@ -928,10 +969,67 @@ if(!(/iPhone|iPad|iPod|Android/i.test(navigator.userAgent))){
  checkMediaQuery() 
  
  window.addEventListener('resize', checkMediaQuery);
- 
- 
 
-
-  }
+}
 
 // ..........................
+
+// Get in touch - pricing plan
+
+const pricing__items = document.querySelectorAll('.pricing__item');
+const pricingPlan = document.querySelector('.contact__form-input_pricing-plan');
+const contact = document.querySelector('.contact ');
+let chosenPlan = '';
+
+
+pricing__items.forEach(item => {
+  item.addEventListener('click', (ev) => {
+    let elem = ev.currentTarget.querySelector('.pricing__price');
+    chosenPlan = elem.innerHTML.match(/\d+/)[0];
+    showPricingPlan();
+    contact.scrollIntoView({behavior: 'smooth'});
+
+  })
+})
+const showPricingPlan = () => {
+  pricingPlan.innerHTML = `Pricing plan: <span>${chosenPlan}/mo</span>`
+}
+// ..........................
+
+// contact tooltip
+
+const contact__form = document.querySelector('.contact__form');
+const contact__form_inputs = document.querySelectorAll('.contact__form-input');
+const contact__tooltip = document.querySelector('.contact__tooltip');
+contact__form.addEventListener('submit', (ev) => {
+  ev.preventDefault();
+  if (chosenPlan !== '') {
+  contact__form_inputs.forEach(input => {
+    input.value = '';
+    pricingPlan.innerHTML = `Pricing plan:`;
+    chosenPlan = ''
+    })
+  }
+  else if(chosenPlan === '') {
+    contact__tooltip.classList.add('shown');
+    setTimeout(()=>{
+      contact__tooltip.classList.remove('shown');
+    },3000)
+  }
+
+})
+
+// .........................
+
+// scroll from footer to header
+const footer_btn = document.querySelector('.footer-to__top-btn');
+const header = document.querySelector('.header');
+
+footer_btn.addEventListener('click', () => {
+  header.scrollIntoView();
+})
+
+
+// .........................
+
+// https://codepen.io/fabriceleven/pen/KdveeO

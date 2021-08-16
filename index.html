@@ -10,7 +10,7 @@
 </head>
 
 <body>
-   <header class="header">
+   <header class="header" data-menu-navigation='home'>
       <div class="header__top">
          <div class="header__top-inner">
             <div class="logo">
@@ -22,7 +22,7 @@
             <nav class="menu">
                <ul class="menu__list">
                   <li class="menu__list-item">
-                     <a class="menu__link link-active" href="#">HOME</a>
+                     <a class="menu__link" href="#">HOME</a>
                   </li>
                   <li class="menu__list-item">
                      <a class="menu__link" href="#">ABOUT US</a>
@@ -31,10 +31,10 @@
                      <a class="menu__link" href="#">PORTFOLIO</a>
                   </li>
                   <li class="menu__list-item">
-                     <a class="menu__link" href="#">OUR TEAM</a>
+                     <a class="menu__link" href="#">BLOG</a>
                   </li>
                   <li class="menu__list-item">
-                     <a class="menu__link" href="#">BLOG</a>
+                     <a class="menu__link" href="#">OUR TEAM</a>
                   </li>
                   <li class="menu__list-item">
                      <a class="menu__link" href="#">CONTACT</a>
@@ -51,7 +51,7 @@
          </div>
       </div>
    </header>
-   <section class="about">
+   <section class="about" data-menu-navigation='about us'>
       <div class="container">
          <div class="about__inner">
             <div class="title about__title _anim-items _anim-no-hide">
@@ -182,7 +182,7 @@
          </div>
       </div>
    </section>
-   <section class="portfolio">
+   <section class="portfolio" data-menu-navigation='portfolio'>
           <div class="portfolio__head container">
              <div class="title">
                 Portfolio
@@ -255,7 +255,7 @@
             </div>
       </div>
    </section>
-   <section class="slider container">
+   <section class="slider container" data-menu-navigation='blog'>
       <div class="slider__wrapper">
          <div class="slider-track">
             <div class="slider__item" data-num="1">
@@ -337,7 +337,7 @@
       <button class="slider__control slider__control-right icon-arrow-right" aria-label='Button right'></button>
 
    </section>
-   <section class="team">
+   <section class="team" data-menu-navigation='our team'>
       <div class="container">
          <div class="title">Our Team
             <div class="title__line"></div>
@@ -429,11 +429,14 @@
                <div class="title__line"></div>
             </div>
             <form class="contact__form" action="">
-               <div class="contact__form-input contact__form-input_pricing-plan">Pricing plan</div>
-               <input class="contact__form-input" type="text" placeholder="YOUR NAME">
-               <input class="contact__form-input" type="text" placeholder="VALID EMAIL">
+               <div class="contact__form-input contact__form-input_pricing-plan">Pricing plan:</div>
+               <input class="contact__form-input" type="text" placeholder="YOUR NAME" required>
+               <input class="contact__form-input" type="text" placeholder="VALID EMAIL" required>
                <textarea class="contact__form-input" placeholder="YOUR MESSAGE"></textarea>
-               <button class="contact__form-btn">SEND MESSAGE</button>
+               <button class="contact__form-btn">
+                  SEND MESSAGE
+                  <span class="contact__tooltip">Сhoose a price in the section above</span>
+               </button>
             </form>
          </div>
          <div class="contact__map">
@@ -443,7 +446,7 @@
          </div>
       </div>
    </section>
-   <footer class="footer">
+   <footer class="footer" data-menu-navigation='contact'>
       <div class="footer__content">
          <div class="footer__inner">
             <div class="logo logo--line">
