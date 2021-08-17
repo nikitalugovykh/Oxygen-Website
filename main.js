@@ -830,43 +830,39 @@ window.addEventListener('resize', () => {
 // ...............
 
 // Animation for pricing cards
+const pricing__containers = document.querySelectorAll(".pricing__item-container");
+const pricing__items = document.querySelectorAll(".pricing__item");
 const mediaQuerySize = 768;
-if(!(/iPhone|iPad|iPod|Android/i.test(navigator.userAgent))){
-   // Init
-   const pricing__containers = document.querySelectorAll(".pricing__item-container");
-   const pricing__items = document.querySelectorAll(".pricing__item");
 
- 
-   // Mouse
-   class Mouse {
-     constructor() {
-       this._x = 0;
-       this._y = 0;
-       this.x = 0;
-       this.y = 0;
-     }
-     updatePosition (event) {
-       let e = event || window.event;
-       this.x = e.clientX - this._x;
-       this.y = (e.clientY + pageYOffset - this._y) * -1;
-     };
-     setOrigin (e) {
-       this._x = e.offsetLeft + Math.floor(e.offsetWidth / 2);
-       this._y = e.offsetTop + Math.floor(e.offsetHeight / 2);
-     };
-     show () {
-         return "(" + this.x + ", " + this.y + ")";
-       };
-   };
- 
- 
+class Mouse {
+  constructor() {
+    this._x = 0;
+    this._y = 0;
+    this.x = 0;
+    this.y = 0;
+  }
+  updatePosition (event) {
+    let e = event || window.event;
+    this.x = e.clientX - this._x;
+    this.y = (e.pageY - this._y) * -1;
+  };
+  setOrigin (e) {
+    this._x = e.offsetLeft + Math.floor(e.offsetWidth / 2);
+    this._y = e.offsetTop + Math.floor(e.offsetHeight / 2);
+  };
+  show () {
+      return "(" + this.x + ", " + this.y + ")";
+    };
+};
+
+const dataMouse = Array.from(pricing__containers).map(container => {
+  let _obj = new Mouse();
+  _obj.setOrigin(container);
+  return _obj
+})  
+
+if(!(/iPhone|iPad|iPod|Android/i.test(navigator.userAgent))){
    
- const dataMouse = Array.from(pricing__containers).map(container => {
-     let _obj = new Mouse();
-     _obj.setOrigin(container);
-     return _obj
- })  
- 
    //-----------------------------------------
  
    let counter = 0;
@@ -934,6 +930,9 @@ if(!(/iPhone|iPad|iPod|Android/i.test(navigator.userAgent))){
        container.removeEventListener('mousemove', onMouseMoveHandler);
      })
    } else {
+
+    updateSetOrigin()
+
      pricing__containers.forEach(container => {
        container.addEventListener('mouseenter', onMouseEnterHandler);
        container.addEventListener('mouseleave', onMouseLeaveHandler);
@@ -947,11 +946,17 @@ if(!(/iPhone|iPad|iPod|Android/i.test(navigator.userAgent))){
 
 }
 
+function updateSetOrigin () {
+  pricing__containers.forEach(container => {
+    let dataMouseItem = container.dataset.container-1;
+    dataMouse[dataMouseItem].setOrigin(container)
+  })
+}
+
 // ..........................
 
 // Get in touch - pricing plan
 
-const pricing__items = document.querySelectorAll('.pricing__item');
 const pricingPlan = document.querySelector('.contact__form-input_pricing-plan');
 const contact = document.querySelector('.contact ');
 let chosenPlan = '';

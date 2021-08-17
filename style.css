@@ -103,13 +103,13 @@ body {
     z-index: 2;
 }
 .menu__list-item {
-    margin: 0 11px;
+    margin: 0 11px 6px;
     white-space: nowrap;
 }
  
 .menu__link {
     text-decoration: none;
-    font-family: 'Raleway' sans-serif;
+    font-family: 'Raleway', sans-serif;
     font-style: normal;
     font-weight: bold;
     font-size: 12px;
@@ -136,7 +136,7 @@ body {
 }
 
 .header__content-inner {
-    background-image: url('./img/Header-bg.jpg');
+    background-image: url('./img/Header-bg.webp');
     background-position: top;
     background-repeat: no-repeat;
     background-size: cover;
@@ -460,7 +460,7 @@ body {
 }
 .menu__link::before {
     position: absolute;
-    bottom: 6px;
+    bottom: 0px;
     left: 0;
     content: '';
     width: 100%;
@@ -733,20 +733,9 @@ body {
     transition: all .1s linear;
 }
 
-/* .expertise__item:first-child:hover {
-    background-image: url('./img/icons/vector.svg');
-    
-}
-.expertise__item:nth-child(2)::before {
-    background-image: url('./img/icons/monitor.svg');
-}
-.expertise__item:last-child::before {
-    background-image: url('./img/icons/speaker\ copy.svg');
-} */
-
 .expertise__item-title {
     padding-bottom: 17px;
-    font-family: 'Raleway' sans-serif;
+    font-family: 'Raleway', sans-serif;
     font-weight: bold;
     font-size: 14px;
     line-height: 20px;
@@ -759,7 +748,7 @@ body {
     font-weight: 300;
     font-size: 14px;
     line-height: 24px;
-    color: #777777;
+    color: #6b6b6b;
     text-align: justify;
 } 
 
@@ -899,7 +888,7 @@ body {
     display: flex;
 }
 .features__img {
-    background-image: url('./img/Let’s_make_magic.jpg');
+    background-image: url('./img/Let’s_make_magic.webp');
     height: 840px;
     width: 60%;
     min-width: 413px;
@@ -1058,7 +1047,7 @@ body {
     background-color: rgb(246, 248, 250);
     width: 100%;
     height: 100px;
-    font-family: Montserrat, sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-weight: bold;
     font-size: 14px;
     line-height: 17px;
@@ -1612,7 +1601,7 @@ left: 0; */
     font-weight: 300;
     font-size: 14px;
     line-height: 24px;
-    color: #777777;
+    color: #6b6b6b;
 }
 
 .slider__control {
@@ -1634,7 +1623,7 @@ left: 0; */
 }
 .slider__control:hover {
     transform: scale(1.1);
-    color:#777777;
+    color:#6b6b6b;
 }
 .slider__control:active {
     transform: scale(0.9);
@@ -1783,7 +1772,7 @@ left: 0; */
     line-height: 16px;
     text-align: center;
 
-    color: #C2C2C2;
+    color: #545454;
 }
 @media (max-width:1024px) {
     .team__items {

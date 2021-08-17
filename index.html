@@ -47,7 +47,7 @@
          <h1 class="header__content-title _anim-items _anim-no-hide">OXYGEN</h1>
          <div class="header__content-description _anim-items _anim-no-hide">STARTER UI&nbsp;KIT</div>
          <div class="header__content-decor">
-            <button class="header__btn-scroll-down"></button>
+            <button class="header__btn-scroll-down" aria-label="Scroll to next section of page"></button>
          </div>
       </div>
    </header>
@@ -189,7 +189,7 @@
                 <div class="title__line"></div>
              </div>
               <div class="portfolio__slider">
-                  <button class="portfolio__btn portfolio__btn_prev icon-arrow-left" aria-label='Button left'></button>
+                  <button class="portfolio__btn portfolio__btn_prev icon-arrow-left" aria-label='Show previous hidden item in portfolio menu navigation'></button>
                   <nav class="portfolio__menu">
                       <ul class="portfolio__items-wrapper">
                           <li class="portfolio__menu_item link-active" data-item="ALL">ALL</li>
@@ -200,12 +200,12 @@
                           <li class="portfolio__menu_item" data-item="human">Human</li> 
                       </ul>
                   </nav>
-                  <button class="portfolio__btn portfolio__btn_next icon-arrow-right" aria-label='Button right'></button>
+                  <button class="portfolio__btn portfolio__btn_next icon-arrow-right" aria-label='Show next hidden item in portfolio menu navigation'></button>
               </div>
           </div>
           <div class="portfolio__gallery">
              <div class="portfolio__items"></div>
-             <button class="portfolio__btn-more" id='portfolio__btn-more'>VIEW MORE PROJECTS</button>
+             <button class="portfolio__btn-more" id='portfolio__btn-more' aria-label="Show more pictures">VIEW MORE PROJECTS</button>
           </div>
   </section> 
   <section class="video">
@@ -221,7 +221,7 @@
          <div class="video__body">
             <video class="video__content" src="./video/bg.mp4" autoplay loop auto></video>
          </div>
-         <button class="video__btn icon-play"></button>
+         <button class="video__btn icon-play" aria-label='Play video'></button>
          <div class="video-popup">
             <div class="video-popup__container">
                <div class="video-popup__body">
@@ -325,16 +325,16 @@
       </div>
       <div class="pagination-outter">
          <div class="slider__pagination">
-            <button class="slider__circle slider__circle--active"></button>
-            <button class="slider__circle"></button>
-            <button class="slider__circle "></button>
-            <button class="slider__circle"></button>
-            <button class="slider__circle"></button>
-            <button class="slider__circle"></button>
+            <button class="slider__circle slider__circle--active" aria-label=""></button>
+            <button class="slider__circle" aria-label=""></button>
+            <button class="slider__circle" aria-label=""></button>
+            <button class="slider__circle" aria-label=""></button>
+            <button class="slider__circle" aria-label=""></button>
+            <button class="slider__circle" aria-label=""></button>
          </div>
       </div>
-      <button class="slider__control slider__control-left icon-arrow-left" aria-label='Button left'></button>
-      <button class="slider__control slider__control-right icon-arrow-right" aria-label='Button right'></button>
+      <button class="slider__control slider__control-left icon-arrow-left" aria-label='Show previous quote'></button>
+      <button class="slider__control slider__control-right icon-arrow-right" aria-label='Show next quote'></button>
 
    </section>
    <section class="team" data-menu-navigation='our team'>
@@ -379,7 +379,7 @@
                   <li class="pricing__list-item">1&nbsp;GB Storage</li>
                </ul>
                <div class="pricing__cont">
-                  <button class="pricing__btn">CHOOSE PLAN</button>
+                  <button class="pricing__btn" aria-label="Choose a pricing plan of $29 per month">CHOOSE PLAN</button>
                </div>
                </div>
             </div>
@@ -397,7 +397,7 @@
                   <li class="pricing__list-item">1&nbsp;GB Storage</li>
                </ul>
                <div class="pricing__cont">
-                  <button class="pricing__btn">CHOOSE PLAN</button>
+                  <button class="pricing__btn" aria-label="Choose a pricing plan of $50 per month">CHOOSE PLAN</button>
                </div>
                </div>
             </div>
@@ -415,7 +415,7 @@
                   <li class="pricing__list-item">2&nbsp;GB Storage</li>
                </ul>
                <div class="pricing__cont">
-                  <button class="pricing__btn">CHOOSE PLAN</button>
+                  <button class="pricing__btn" aria-label="Choose a pricing plan of $70 per month">CHOOSE PLAN</button>
                </div>
                </div>
             </div>
@@ -433,14 +433,14 @@
                <input class="contact__form-input" type="text" placeholder="YOUR NAME" required>
                <input class="contact__form-input" type="text" placeholder="VALID EMAIL" required>
                <textarea class="contact__form-input" placeholder="YOUR MESSAGE"></textarea>
-               <button class="contact__form-btn">
+               <button class="contact__form-btn" aria-label="Send an application with the provided name, mail and the selected pricing plan">
                   SEND MESSAGE
                   <span class="contact__tooltip">Сhoose a price in the section above</span>
                </button>
             </form>
          </div>
          <div class="contact__map">
-            <iframe
+            <iframe title="Map how to find a place" 
                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5965.3734884286105!2d84.95903264907889!3d56.49437713918611!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x432693710c877919%3A0x90c01c9330982f24!2z0JzQsNGP0Lo!5e0!3m2!1sru!2sru!4v1607792655742!5m2!1sru!2sru"
                frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
          </div>
@@ -479,7 +479,7 @@
                <a class="footer__phone" href="tel:0038765252222">(00387) 65&nbsp;252&nbsp;222</a>
                <a class="footer__email" href="mailto:info@mail.com">info@mail.com</a>
             </div>
-            <button class="footer-to__top-btn"></button>
+            <button class="footer-to__top-btn" aria-label="Scroll to up of page"></button>
          </div>
       </div>
       <div class="footer__copy">@2020 Oxygen Theme</div>
